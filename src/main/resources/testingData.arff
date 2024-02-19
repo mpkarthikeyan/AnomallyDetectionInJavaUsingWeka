@@ -1,0 +1,14 @@
+@relation HTTPRequests
+
+@attribute method {GET, POST, PUT, DELETE}
+@attribute url string
+@attribute headers string
+@attribute payload_size numeric
+@attribute class {normal, anomaly}
+
+@data
+GET, "/api/data", "Accept: application/json", 256, normal
+POST, "/api/submit", "Content-Type: application/json", 512, normal
+GET, "/api/data", "Accept: application/json", 1024, anomaly
+PUT, "/api/update", "Content-Type: application/json", 128, normal
+DELETE, "/api/delete", "Authorization: Bearer TOKEN", 64, anomaly
